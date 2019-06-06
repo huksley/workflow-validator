@@ -1,0 +1,84 @@
+{
+  "name": "workflow-validator",
+  "description": "Workflow, BPMN and DMN validator",
+  "version": "0.1.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.9.0 <11.0.0",
+    "yarn": ">=1.12.3"
+  },
+  "dependencies": {
+    "@octokit/rest": "^16.27.3",
+    "assert": "^1.4.1",
+    "aws-lambda": "^0.1.2",
+    "aws-sdk": "^2.441.0",
+    "body-parser": "^1.19.0",
+    "bpmn-moddle": "^5.1.6",
+    "camunda-bpmn-moddle": "^3.2.0",
+    "cors": "^2.8.5",
+    "cross-env": "^5.2.0",
+    "dotenv": "^7.0.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "github-app": "^4.0.1",
+    "github-webhook-handler": "^0.7.1",
+    "io-ts": "^1.8.5",
+    "mime": "^2.4.2",
+    "node-fetch": "^2.5.0",
+    "ramda": "^0.26.1",
+    "serverless-http": "^2.0.2",
+    "source-map-support": "^0.5.12",
+    "uuid": "^3.3.2",
+    "winston": "^2"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.24",
+    "@types/dotenv": "^6.1.1",
+    "@types/form-data": "^2.2.1",
+    "@types/mime": "^2.0.1",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.13.5",
+    "@types/node-fetch": "^2.3.3",
+    "@types/ramda": "^0.26.8",
+    "@types/sharp": "^0.22.1",
+    "@types/uuid": "^3.4.4",
+    "form-data": "^2.3.3",
+    "husky": "^2.2.0",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.18.11",
+    "prettier": "^1.17.0",
+    "pretty-quick": "^1.10.0",
+    "serverless": "^1.41.1",
+    "serverless-api-stage": "^1.4.0",
+    "serverless-plugin-existing-s3": "^2.3.3",
+    "serverless-plugin-typescript": "^1.1.7",
+    "shx": "^0.3.2",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.3"
+  },
+  "scripts": {
+    "clean": "shx rm -Rf build node_modules",
+    "dev": "cross-env NODE_ENV=development nodemon -r ts-node/register src/index.ts",
+    "start": "cross-env NODE_ENV=production node ./build/index.js",
+    "build": "tsc -p .",
+    "format": "prettier \"src/**/*.{js,ts,tsx}\" --write",
+    "lint": "ts-node node_modules/.bin/tslint -p . -t verbose",
+    "test": "mocha"
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 100,
+    "parser": "typescript",
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged --pattern \"**/*.*(js|jsx|ts|tsx)\"",
+      "pre-push": "yarn lint && yarn run -s build && yarn test"
+    }
+  }
+}

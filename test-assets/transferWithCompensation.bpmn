@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1cwzcxc" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.1.0">
+  <bpmn:process id="Process_1nkr367" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_1uh4x0v</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1w5zpcb" sourceRef="Task_1qkkji2" targetRef="Task_0ny5q8t" />
+    <bpmn:sequenceFlow id="SequenceFlow_1uh4x0v" sourceRef="StartEvent_1" targetRef="Task_1qkkji2" />
+    <bpmn:endEvent id="EndEvent_17n101t">
+      <bpmn:incoming>SequenceFlow_0nnm1cb</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0nnm1cb" sourceRef="Task_0ny5q8t" targetRef="EndEvent_17n101t" />
+    <bpmn:serviceTask id="Task_0ny5q8t" name="Deposit">
+      <bpmn:incoming>SequenceFlow_1w5zpcb</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0nnm1cb</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Task_1qkkji2" name="Withdraw">
+      <bpmn:incoming>SequenceFlow_1uh4x0v</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1w5zpcb</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:boundaryEvent id="BoundaryEvent_11xqee0" attachedToRef="Task_0ny5q8t">
+      <bpmn:compensateEventDefinition />
+    </bpmn:boundaryEvent>
+    <bpmn:serviceTask id="Task_1nuih0s" name="Cancel deposit" isForCompensation="true" />
+    <bpmn:boundaryEvent id="BoundaryEvent_1y6k275" attachedToRef="Task_1qkkji2">
+      <bpmn:compensateEventDefinition />
+    </bpmn:boundaryEvent>
+    <bpmn:serviceTask id="Task_1w59xe2" name="Cancel withdraw" isForCompensation="true" />
+    <bpmn:association id="Association_0l4cxfm" associationDirection="One" sourceRef="BoundaryEvent_11xqee0" targetRef="Task_1nuih0s" />
+    <bpmn:association id="Association_16paep1" associationDirection="One" sourceRef="BoundaryEvent_1y6k275" targetRef="Task_1w59xe2" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1nkr367">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="151" y="103" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1w5zpcb_di" bpmnElement="SequenceFlow_1w5zpcb">
+        <di:waypoint x="346" y="121" />
+        <di:waypoint x="410" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1uh4x0v_di" bpmnElement="SequenceFlow_1uh4x0v">
+        <di:waypoint x="187" y="121" />
+        <di:waypoint x="246" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_17n101t_di" bpmnElement="EndEvent_17n101t">
+        <dc:Bounds x="670" y="103" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0nnm1cb_di" bpmnElement="SequenceFlow_0nnm1cb">
+        <di:waypoint x="510" y="121" />
+        <di:waypoint x="670" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0gf66gw_di" bpmnElement="Task_0ny5q8t">
+        <dc:Bounds x="410" y="81" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_037fcom_di" bpmnElement="Task_1qkkji2">
+        <dc:Bounds x="246" y="81" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BoundaryEvent_0jofhec_di" bpmnElement="BoundaryEvent_11xqee0">
+        <dc:Bounds x="457" y="143" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0l4cxfm_di" bpmnElement="Association_0l4cxfm">
+        <di:waypoint x="475" y="179" />
+        <di:waypoint x="475" y="241" />
+        <di:waypoint x="543" y="241" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1pyubs8_di" bpmnElement="Task_1nuih0s">
+        <dc:Bounds x="543" y="201" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BoundaryEvent_1cftznx_di" bpmnElement="BoundaryEvent_1y6k275">
+        <dc:Bounds x="292" y="143" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_16paep1_di" bpmnElement="Association_16paep1">
+        <di:waypoint x="310" y="179" />
+        <di:waypoint x="310" y="241" />
+        <di:waypoint x="341" y="241" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_02yq92t_di" bpmnElement="Task_1w59xe2">
+        <dc:Bounds x="341" y="201" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

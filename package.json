@@ -2,10 +2,10 @@
   "name": "workflow-validator",
   "description": "Workflow, BPMN and DMN validator",
   "version": "0.1.0",
-  "main": "src/index.ts",
+  "main": "src/server.ts",
   "license": "MIT",
   "engines": {
-    "node": ">=8.9.0 <11.0.0",
+    "node": ">=8.9.0 <8.12.0",
     "yarn": ">=1.12.3"
   },
   "dependencies": {
@@ -28,6 +28,7 @@
     "node-fetch": "^2.5.0",
     "ramda": "^0.26.1",
     "serverless-http": "^2.0.2",
+    "serverless-offline": "^5.0.1",
     "source-map-support": "^0.5.12",
     "uuid": "^3.3.2",
     "winston": "^2"

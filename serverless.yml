@@ -14,18 +14,18 @@ provider:
 
 plugins:
   - serverless-plugin-typescript
+  - serverless-offline
 
 package:
   exclude:
     - "node_modules/aws-sdk/**"
     - "node_modules/aws-lambda/**"
+  include:
+    - ./private-key.pem
 
 functions:
   handlePost:
-    handler: src/index.lambdaHandler
+    handler: src/server.apiHandler
     events:
-      - http:
-          path: api/invoke
-          method: post
-          cors: true
-
+      - http: ANY /
+      - http: 'ANY {proxy+}'

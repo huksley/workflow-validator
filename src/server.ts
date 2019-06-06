@@ -1,4 +1,5 @@
 import { handler } from './app'
+import { logger } from './logger'
 
 const serverless = require('serverless-http')
 const cors = require('cors')
@@ -13,8 +14,18 @@ app.use(bodyParser.json({ strict: false }))
 // Disable 304 support, works wrong IMO
 app.set('etag', false)
 // Always send last-modified as current time
-app.get('/*', function(req, res, next) {
+app.get('/*', function(_, res, next) {
   res.setHeader('Last-Modified', new Date().toUTCString())
+  next()
+})
+
+app.get('/*', function(req, res, next) {
+  logger.info(`Got POST request ${req}, response ${res}`)
+  next()
+})
+
+app.post('/*', function(req, res, next) {
+  logger.info(`Got POST request ${req}, response ${res}`)
   next()
 })
 
@@ -44,4 +55,4 @@ process.on('SIGINT', signal => {
   process.exit(1)
 })
 
-export const postHandler = serverless(app)
+export const apiHandler = serverless(app)

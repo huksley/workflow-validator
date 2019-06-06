@@ -13,4 +13,5 @@ Validates BPMN and DMN models in GitHub, GitLab (TBD) and locally invoked `npx b
   * https://github.com/bkeepers/github-app-example
   * https://github.com/octokit/rest.js
   * https://github.com/probot/github-app
+  * https://developer.github.com/webhooks/securing/
   

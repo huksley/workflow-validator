@@ -2,6 +2,7 @@ import * as createHandler from 'github-webhook-handler'
 import * as createApp from 'github-app'
 import { config } from './config'
 import * as fs from 'fs'
+import { logger } from './logger'
 
 export const handler = (createHandler as any)({
   path: config.APP_PATH,
@@ -16,8 +17,7 @@ const app = createApp({
 })
 
 app.asApp().then(github => {
-  console.log('Installations:')
-  github.apps.getInstallations({}).then(inst => console.info('Installations: ', inst.data))
+  github.apps.listInstallations({}).then(inst => logger.info('Installations: ', inst))
 })
 
 handler.on('installation', function(event) {

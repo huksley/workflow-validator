@@ -48,5 +48,6 @@ build
 
 # Serverless assets
 .serverless
+.build
 
 private-key.pem

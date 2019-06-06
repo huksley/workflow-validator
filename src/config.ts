@@ -17,7 +17,7 @@ export const defaultConfig = {
   TABLE_NAME: 'find-face-sessions',
   // GitHub auth
   APP_SECRET: 'ieyeeshiu9hou1Xu',
-  APP_PATH: '/',
+  APP_PATH: '/dev',
   APP_ID: 32389,
   APP_PRIVATE_KEY_PATH: './private-key.pem',
 }

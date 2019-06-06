@@ -67,7 +67,8 @@
     "build": "tsc -p .",
     "format": "prettier \"src/**/*.{js,ts,tsx}\" --write",
     "lint": "ts-node node_modules/.bin/tslint -p . -t verbose",
-    "test": "mocha"
+    "test": "mocha",
+    "deploy": "serverless deploy"
   },
   "prettier": {
     "semi": false,

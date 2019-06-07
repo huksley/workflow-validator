@@ -4,6 +4,7 @@
 
 Validates BPMN and DMN models in GitHub, GitLab (TBD) and locally invoked `npx bpmlint` or `yarn dmnlint`
 
+![Workflow](./workflow.png)
 
 ## Links
 

@@ -1,32 +1,26 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": false, // no errors on commonjs default import
-    "checkJs": false,
-    "declaration": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "importHelpers": true, // importing helper functions from tslib
-    "lib": ["es6", "es2017", "dom"],
+    "allowJs": false,
+    "lib": ["es2015", "es2017"],
     "module": "commonjs",
     "moduleResolution": "node",
-    "noEmitHelpers": true, // disable emitting inline helper functions
-    "noEmitOnError": true,
+    "target": "es5",
+    "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "outDir": "build",
+    "noUnusedLocals": false,
     "pretty": true,
-    "removeComments": true,
+    "strict": true,
     "sourceMap": true,
-    "strictNullChecks": true,
-    "target": "es6",
-    // TODO: recommend doing a refactor to turn these to true in order of priority listed below
-    "noImplicitAny": false,
-    "noImplicitThis": false,
-    "noImplicitReturns": false
+    "outDir": "./lib",
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "declaration": false,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true
   },
-  "include": ["src/**/*", "tslint/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*"
+  ],
+  "compileOnSave": false
 }

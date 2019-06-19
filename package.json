@@ -37,6 +37,7 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.24",
     "@types/body-parser": "^1.17.0",
+    "@types/bpmn-moddle": "^5.1.1",
     "@types/cors": "^2.8.5",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^4.17.0",
@@ -48,6 +49,8 @@
     "@types/ramda": "^0.26.8",
     "@types/sharp": "^0.22.1",
     "@types/uuid": "^3.4.4",
+    "babel": "^6.23.0",
+    "copy-webpack-plugin": "^5.0.3",
     "form-data": "^2.3.3",
     "husky": "^2.2.0",
     "mocha": "^6.1.4",
@@ -59,20 +62,22 @@
     "serverless-plugin-existing-s3": "^2.3.3",
     "serverless-plugin-typescript": "^1.1.7",
     "shx": "^0.3.2",
+    "smee-client": "^1.1.0",
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.4.3"
+    "typescript": "^3.4.3",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4"
   },
   "scripts": {
     "clean": "shx rm -Rf build node_modules",
-    "dev": "cross-env NODE_ENV=development nodemon src/server.ts",
-    "start": "cross-env NODE_ENV=production node ./build/src/server.js",
-    "build": "tsc -p .",
+    "build": "webpack && tsc -p .",
     "format": "prettier \"src/**/*.{js,ts,tsx}\" --write",
     "lint": "ts-node node_modules/.bin/tslint -p . -t verbose",
     "test": "mocha",
-    "deploy": "serverless deploy"
+    "deploy": "serverless deploy",
+    "dev": "cross-env NODE_ENV=development NODE_OPTIONS=\"--require ts-node/register\" yarn probot run -a 32389 -s \"ieyeeshiu9hou1Xu\" -P ./private-key.pem ./src/probot.ts"
   },
   "prettier": {
     "semi": false,

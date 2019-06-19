@@ -11,6 +11,12 @@ provider:
   timeout: 30
   # optional, default is true
   versionFunctions: false
+  # Define additional env vars for deployment
+  environment:
+    APP_ID: 32389
+    PRIVATE_KEY_PATH: './private-key.pem'
+    WEBHOOK_SECRET: 'ieyeeshiu9hou1Xu'
+    WEBHOOK_PATH: '/dev'
 
 plugins:
   - serverless-plugin-typescript
@@ -25,7 +31,7 @@ package:
 
 functions:
   handlePost:
-    handler: src/server.apiHandler
+    handler: src/server.serverlessHandler
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'

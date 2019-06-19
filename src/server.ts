@@ -1,18 +1,23 @@
 // tslint:disable-next-line:no-var-requires
 const serverless = require('serverless-http')
+const { serverlessProbot } = require('@probot/serverless-lambda')
 
 import * as cors from 'cors'
 import * as express from 'express'
 import * as bodyParser from 'body-parser'
 
-import { handler } from './app'
+import { createServer } from 'probot/lib/server'
+
+import { appHandler } from './app'
 import { logger } from './logger'
 
-const app = express()
+const router = express()
 const port = process.env.SERVER_PORT || 3000
 
-app.use(cors())
-app.use(bodyParser.json({ strict: false }))
+router.use(cors())
+router.use(bodyParser.json({ strict: false }))
+
+const requests: any[] = []
 
 const getCircularReplacer = () => {
   const seen = new WeakSet()
@@ -28,24 +33,28 @@ const getCircularReplacer = () => {
 }
 
 // Disable 304 support, works wrong IMO
-app.set('etag', false)
+router.set('etag', false)
 // Always send last-modified as current time
-app.get('/*', (_, res, next) => {
+router.get('/*', (_, res, next) => {
   res.setHeader('Last-Modified', new Date().toUTCString())
   next()
 })
 
-app.get('/*', (req, _, next) => {
+router.get('/*', (req, _, next) => {
   logger.info(`Got GET request ${JSON.stringify(req, getCircularReplacer(), 2)}`)
   next()
 })
 
-app.post('/*', (req, _, next) => {
+router.post('/*', (req, _, next) => {
   logger.info(`Got POST request ${JSON.stringify(req, getCircularReplacer(), 2)}`)
   next()
 })
 
-app.use(handler)
+router.post('/__requests', (__, response, _) => {
+  response.send(requests)
+})
+
+router.use(handler)
 
 // Do something when AWS lambda started
 if (process.env.AWS_EXECUTION_ENV !== undefined) {
@@ -56,7 +65,7 @@ if (process.env.AWS_EXECUTION_ENV !== undefined) {
   if (process.env.IS_OFFLINE === 'true') {
     logger.info('Serverless offline started.')
   } else {
-    app.listen(port, () => {
+    router.listen(port, () => {
       logger.info(`Listening on port: ${port}`)
     })
   }
@@ -71,4 +80,4 @@ process.on('SIGINT', signal => {
   process.exit(1)
 })
 
-export const apiHandler = serverless(app)
+export const apiHandler = serverless(router)

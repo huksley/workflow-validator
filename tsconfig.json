@@ -11,16 +11,15 @@
     "pretty": true,
     "strict": true,
     "sourceMap": true,
-    "outDir": "./lib",
     "skipLibCheck": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
     "declaration": false,
     "resolveJsonModule": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "outDir": "build"
   },
-  "include": [
-    "src/**/*"
-  ],
+  "include": ["src/**/*", "tslint/**/*"],
+  "exclude": ["node_modules"],
   "compileOnSave": false
 }

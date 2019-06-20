@@ -16,7 +16,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts(x?)$/,
+        test: /\.jXXXs(x?)$/,
         use: [
           {
             loader: 'ts-loader',
@@ -30,6 +30,16 @@ module.exports = {
       {
         from: 'node_modules/bpmn-moddle/package.json',
         toFile: './node_modules/bpmn-moddle-gen/package.json',
+        transform: content => {
+          let s = String(content)
+          s = s.replace('"bpmn-moddle"', '"bpmn-moddle-gen"')
+          return s
+        },
+      },
+      {
+        from: 'src/bpmn-moddle-gen.d.ts',
+        toFile: './node_modules/bpmn-moddle-gen/index.d.ts',
+        transformPath: (dst, abs) => 'index.d.ts',
       },
     ]),
   ],

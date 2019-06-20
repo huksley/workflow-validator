@@ -78,7 +78,8 @@
     "lint": "ts-node node_modules/.bin/tslint -p . -t verbose",
     "test": "mocha",
     "deploy": "serverless deploy",
-    "dev": "cross-env NODE_ENV=development NODE_OPTIONS=\"--require ts-node/register\" yarn probot run -a 32389 -s \"ieyeeshiu9hou1Xu\" -P ./private-key.pem ./src/probot.ts"
+    "dev": "yarn nodemon --exec 'yarn start'",
+    "start": "cross-env NODE_ENV=development NODE_OPTIONS=\"--require ts-node/register\" yarn probot run -a 32389 -s \"ieyeeshiu9hou1Xu\" -P ./private-key.pem ./src/probot.ts"
   },
   "prettier": {
     "semi": false,

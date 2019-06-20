@@ -19,7 +19,7 @@
     "experimentalDecorators": true,
     "outDir": "build"
   },
-  "include": ["src/**/*", "tslint/**/*"],
+  "include": ["src/**/*", "tslint/**/*", "src/**.d.ts" ],
   "exclude": ["node_modules"],
   "compileOnSave": false
 }

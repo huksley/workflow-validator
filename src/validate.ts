@@ -1,13 +1,9 @@
 import { logger } from './logger'
 
 /**
- * Original, ES7 module bpm-moddle
- */
-// import { BpmnModdle } from 'bpmn-moddle'
-
-/**
- * Webpack generated bpmn-moddle
- * To update use `yarn webpack`
+ * Webpack generated bpmn-moddle-gen from bpmn-moddle so it will be consumable by node, serverless, typescript, AWS Lambda
+ * To update use `yarn webpack`,
+ * don`t use import!
  */
 // tslint:disable-next-line:no-var-requires
 const bpmnModdleExports = require('bpmn-moddle-gen')

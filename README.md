@@ -25,3 +25,5 @@ https://smee.io/8C0Z4NayzAPLUnCV
   * https://github.com/huksley/aws-detect-faces-workflow/pull/1
   * http://octokit.github.io/rest.js/
   * https://probot.github.io/docs/best-practices/
+  * https://github.com/isomorphic-git/isomorphic-git-bot/blob/glitch/index.js
+  * https://isomorphic-git.org/

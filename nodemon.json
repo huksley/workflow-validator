@@ -1,5 +1,11 @@
 {
-  "watch": ["src", ".env", "package.json", "yarn.lock"],
+  "watch": [
+    "src",
+    ".env",
+    "package.json",
+    "yarn.lock"
+  ],
+  "ext": "ts",
   "delay": 2000,
   "runOnChangeOnly": false
 }

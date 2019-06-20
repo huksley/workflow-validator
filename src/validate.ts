@@ -20,12 +20,12 @@ const CamundaModdleDefinition = JSON.parse(
 )
 
 export const validateContent = (content: string) => {
-  return new Promise((resolve, reject) => {
+  return new Promise<{ error: string; bpmn: any }>((resolve, reject) => {
     const moddle = new BpmnModdle({ camunda: CamundaModdleDefinition })
     logger.info('Got moddle', moddle)
-    return moddle.fromXML(content, (err: any, bpmn: any) => {
-      logger.info(`Parsed bpmn err: ${err}, ${JSON.stringify(bpmn, null, 2)}`)
-      resolve({ err, bpmn })
+    return moddle.fromXML(content, (error: any, bpmn: any) => {
+      logger.info(`Parsed bpmn err: ${error}, ${JSON.stringify(bpmn, null, 2)}`)
+      resolve({ error, bpmn })
     })
   })
 }

@@ -24,6 +24,7 @@
     "express": "^4.17.1",
     "github-webhook-handler": "^0.7.1",
     "io-ts": "^1.8.5",
+    "isomorphic-git": "^0.55.4",
     "mime": "^2.4.2",
     "node-fetch": "^2.5.0",
     "probot": "^9.2.15",

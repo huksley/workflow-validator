@@ -27,3 +27,4 @@ https://smee.io/8C0Z4NayzAPLUnCV
   * https://probot.github.io/docs/best-practices/
   * https://github.com/isomorphic-git/isomorphic-git-bot/blob/glitch/index.js
   * https://isomorphic-git.org/
+  * https://github.com/streamich/memfs

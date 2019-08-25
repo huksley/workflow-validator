@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1n9m7ws" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.1.0">
   <bpmn:process id="Process_0i5t1oo" isExecutable="true">
-    <bpmn:startEvent id="StartEvent_1">
+    <bpmn:startEvent id="StartEvent_1" name="Start">
       <bpmn:outgoing>SequenceFlow_06wbve8</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="SequenceFlow_06wbve8" sourceRef="StartEvent_1" targetRef="SubProcess_0ivmxdw" />
-    <bpmn:endEvent id="EndEvent_012bv0m">
+    <bpmn:endEvent id="EndEvent_012bv0m" name="End">
       <bpmn:incoming>SequenceFlow_1wvi4w1</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_1wvi4w1" sourceRef="SubProcess_0ivmxdw" targetRef="EndEvent_012bv0m" />
@@ -19,7 +19,7 @@
         <bpmn:outgoing>SequenceFlow_05h8jip</bpmn:outgoing>
       </bpmn:startEvent>
       <bpmn:subProcess id="SubProcess_1njxtri" triggeredByEvent="true">
-        <bpmn:startEvent id="StartEvent_1b4wuqw">
+        <bpmn:startEvent id="StartEvent_1b4wuqw" name="Failure">
           <bpmn:outgoing>SequenceFlow_1d0m3tz</bpmn:outgoing>
           <bpmn:compensateEventDefinition />
         </bpmn:startEvent>
@@ -67,11 +67,18 @@
       <bpmn:association id="Association_15u8hc8" associationDirection="One" sourceRef="BoundaryEvent_16inzm5" targetRef="Task_1ud59a9" />
       <bpmn:association id="Association_0xjtj8q" associationDirection="One" sourceRef="BoundaryEvent_0hq0tr2" targetRef="Task_1qo384b" />
     </bpmn:transaction>
+    <bpmn:textAnnotation id="TextAnnotation_01gp5s2">
+      <bpmn:text>Reliable money transfer</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_18h5kmn" sourceRef="SubProcess_0ivmxdw" targetRef="TextAnnotation_01gp5s2" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0i5t1oo">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="142" y="292" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="148" y="335" width="24" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_06wbve8_di" bpmnElement="SequenceFlow_06wbve8">
         <di:waypoint x="178" y="310" />
@@ -113,6 +120,9 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_012bv0m_di" bpmnElement="EndEvent_012bv0m">
         <dc:Bounds x="898" y="291" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="906" y="334" width="20" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1wvi4w1_di" bpmnElement="SequenceFlow_1wvi4w1">
         <di:waypoint x="835" y="309" />
@@ -122,10 +132,13 @@
         <dc:Bounds x="287" y="367" width="524" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_0dssjia_di" bpmnElement="StartEvent_1b4wuqw">
-        <dc:Bounds x="328" y="409" width="36" height="36" />
+        <dc:Bounds x="315" y="409" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="316" y="452" width="34" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1d0m3tz_di" bpmnElement="SequenceFlow_1d0m3tz">
-        <di:waypoint x="364" y="427" />
+        <di:waypoint x="351" y="427" />
         <di:waypoint x="406" y="427" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="IntermediateThrowEvent_17z55d9_di" bpmnElement="EndEvent_1lbtxzh">
@@ -165,6 +178,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_0fpotg3_di" bpmnElement="EndEvent_0fpotg3">
         <dc:Bounds x="755" y="409" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="756" y="452" width="34" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1uskj55_di" bpmnElement="SequenceFlow_1uskj55">
         <di:waypoint x="706" y="427" />
@@ -173,6 +189,13 @@
       <bpmndi:BPMNShape id="Transaction_1vtbyce_di" bpmnElement="SubProcess_0ivmxdw" isExpanded="true">
         <dc:Bounds x="251" y="111" width="584" height="396" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_01gp5s2_di" bpmnElement="TextAnnotation_01gp5s2">
+        <dc:Bounds x="693" y="36" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_18h5kmn_di" bpmnElement="Association_18h5kmn">
+        <di:waypoint x="700" y="111" />
+        <di:waypoint x="727" y="76" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

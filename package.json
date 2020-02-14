@@ -12,7 +12,7 @@
     "@octokit/rest": "^16.27.3",
     "@probot/serverless-lambda": "^0.3.0",
     "assert": "^1.4.1",
-    "aws-lambda": "^0.1.2",
+    "aws-lambda": "^1.0.5",
     "aws-sdk": "^2.441.0",
     "body-parser": "^1.19.0",
     "bpmn-moddle": "^5.1.6",
